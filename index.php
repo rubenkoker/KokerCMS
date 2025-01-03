@@ -40,6 +40,8 @@ include('includes/header.php');
     </div>
   </div>
 </nav>
+<script src="js/mdb.umd.min.js">
+ </script>
 <?php
 include('includes/footer.php');
 ?>
