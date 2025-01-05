@@ -5,20 +5,22 @@ include('includes/config.php');
 include('includes/functions.php');
 echo 'hallo';
 include('includes/header.php');
+var_dump($_POST);
 ?>
-<div class="container">
-<div class="row justify-content center">
-<form>
+<div class="container mt-5">
+<div class="row justify-content-center">
+  <div class="col-md-6">
+<form method="post">
   <!-- Email input -->
   <div data-mdb-input-init class="form-outline mb-4">
-    <input type="email" id="form1Example1" class="form-control" />
-    <label class="form-label" for="form1Example1">Email address</label>
+    <input type="email" id="email" class="form-control" name="email"/>
+    <label class="form-label" for="email">Email address</label>
   </div>
 
   <!-- Password input -->
   <div data-mdb-input-init class="form-outline mb-4">
-    <input type="password" id="form1Example2" class="form-control" />
-    <label class="form-label" for="form1Example2">Password</label>
+    <input type="password" id="password" class="form-control" name="password"/>
+    <label class="form-label" for="password">Password</label>
   </div>
 
   <!-- 2 column grid layout for inline styling -->
@@ -42,6 +44,7 @@ include('includes/header.php');
   <!-- Submit button -->
   <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Sign in</button>
 </form>
+</div>
 </div>
 </div>
 <script src="js/mdb.umd.min.js">
