@@ -5,7 +5,21 @@ include('includes/config.php');
 include('includes/functions.php');
 echo 'hallo';
 include('includes/header.php');
-var_dump($_POST);
+if(isset($_POST['email'])){
+  $query = 'SELECT * FROM users WHERE
+  email = "'.$_POST['email'] . '"
+  AND
+  password ="'. sha1($_POST['password']).'"';
+  
+var_dump($query);
+$result = mysqli_query($connect, $query);
+
+
+$record = mysqli_fetch_assoc($result);
+var_dump($record);
+}
+
+
 ?>
 <div class="container mt-5">
 <div class="row justify-content-center">
