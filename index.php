@@ -6,17 +6,16 @@ include('includes/functions.php');
 echo 'hallo';
 include('includes/header.php');
 if(isset($_POST['email'])){
-  $query = 'SELECT * FROM users WHERE
-  email = "'.$_POST['email'] . '"
-  AND
-  password ="'. sha1($_POST['password']).'"';
+  if($stm = $connect->prepare('SELECT * FROM users WHERE email = ? AND password = ? ')){
+    $hashed =  sha1($_POST['password']);
+    $stm->bind_param('ss', $_POST['email'],$hashed);
+    $stm->execute();
+    $result = $stm->get_result();
+    $user = $result->fetch_assoc();
+    var_dump($user);
+    
+  }
   
-var_dump($query);
-$result = mysqli_query($connect, $query);
-
-
-$record = mysqli_fetch_assoc($result);
-var_dump($record);
 }
 
 
