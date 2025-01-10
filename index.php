@@ -13,7 +13,19 @@ if(isset($_POST['email'])){
     $result = $stm->get_result();
     $user = $result->fetch_assoc();
     var_dump($user);
-    
+    if($user){
+      $_SESSION['id'] = $user['id'];
+      $_SESSION['email'] = $user['email'];
+      $_SESSION['username'] = $user['username'];
+        //conformation must be added
+
+        header('Location: dashboard.php');
+        die();
+    }
+    $stm->close();
+  }
+  else{
+    echo 'could not prepare statement';
   }
   
 }
