@@ -38,13 +38,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="kokercms/">Home</a>
+          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
+          <a class="nav-link" href="dashboard.php">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">logout</a>
+          <a class="nav-link" href="logout.php">logout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled"
