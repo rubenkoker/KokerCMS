@@ -3,8 +3,14 @@
 include('includes/database.php');
 include('includes/config.php');
 include('includes/functions.php');
-echo 'hallo';
+
 include('includes/header.php');
+
+if(isset($_SESSION['id'])){
+  header('location: dashboard.php');
+  die();
+}
+
 if(isset($_POST['email'])){
   if($stm = $connect->prepare('SELECT * FROM users WHERE email = ? AND password = ? ')){
     $hashed =  sha1($_POST['password']);
@@ -12,13 +18,13 @@ if(isset($_POST['email'])){
     $stm->execute();
     $result = $stm->get_result();
     $user = $result->fetch_assoc();
-    var_dump($user);
+    
     if($user){
       $_SESSION['id'] = $user['id'];
       $_SESSION['email'] = $user['email'];
       $_SESSION['username'] = $user['username'];
         //conformation must be added
-
+        set_message("hello ".$_SESSION['username']);
         header('Location: dashboard.php');
         die();
     }

@@ -5,7 +5,7 @@ include('includes/config.php');
 include('includes/functions.php');
 secure();
 include('includes/header.php');
-var_dump($_SESSION)
+
 
 
 ?>
