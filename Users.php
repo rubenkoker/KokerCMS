@@ -11,28 +11,48 @@ if($stm = $connect->prepare('SELECT * FROM users')){
     $result = $stm->get_result();
     $user = $result->fetch_assoc();
     var_dump($user);
-    die();
+   
     
     if($user){
         
     }
-    $stm->close();
-}
-else{
-  echo 'could not prepare statement';
-}
+  
 ?>
 <div class="container mt-5">
 <div class="row justify-content-center">
   <div class="col-md-6">
     <h1 class="display-1">User managemetn</h1>
-    <a href="users.php">Users management</a>
-    <a href="posts.php">Posts management</a>
+   <table class="table table-striped table-hover">
+      <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Edit || delete</th>
+      </tr>
+   </table>
+   <?php while($record = mysqli_fetch_assoc($result)){ ?> 
+      <tr>
+      <?php var_dump($record);?> 
+
+      </tr>
+  
+   <?php } ?>
+   
+   
+   ?>
 </div>
 </div>
 </div>
 <script src="js/mdb.umd.min.js">
  </script>
 <?php
+  echo 'no users found';
+  $stm->close();
+}
+else{
+  echo 'could not prepare statement';
+}
 include('includes/footer.php');
+
 ?>
