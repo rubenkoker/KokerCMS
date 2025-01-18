@@ -9,13 +9,11 @@ include('includes/header.php');
 if($stm = $connect->prepare('SELECT * FROM users')){
     $stm->execute();
     $result = $stm->get_result();
-    $user = $result->fetch_assoc();
-    var_dump($user);
-   
+  
+    var_dump($result);
+  if ($result->num_rows >0){
     
-    if($user){
-        
-    }
+    
   
 ?>
 <div class="container mt-5">
@@ -30,24 +28,29 @@ if($stm = $connect->prepare('SELECT * FROM users')){
         <th>Status</th>
         <th>Edit || delete</th>
       </tr>
-   </table>
+  
    <?php while($record = mysqli_fetch_assoc($result)){ ?> 
       <tr>
-      <?php var_dump($record);?> 
-
+      <td><?php echo $record['id'];   ?></td>
+      <td><?php echo $record['username'];   ?></td>
+      <td><?php echo $record['email'];   ?></td>
+      <td><?php echo $record['active'];   ?></td>
       </tr>
   
    <?php } ?>
+   </table>
    
    
-   ?>
 </div>
 </div>
 </div>
 <script src="js/mdb.umd.min.js">
  </script>
 <?php
+  }
+  else{
   echo 'no users found';
+  }
   $stm->close();
 }
 else{
