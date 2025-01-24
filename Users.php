@@ -35,11 +35,13 @@ if($stm = $connect->prepare('SELECT * FROM users')){
       <td><?php echo $record['username'];   ?></td>
       <td><?php echo $record['email'];   ?></td>
       <td><?php echo $record['active'];   ?></td>
+      <td><a href="user_edit.php?id=<?php echo $record['id'];   ?>">Edit</a></td>
+      <td><a href="users.php?delete=<?php echo $record['id'];   ?>">Delete</a>></td>
       </tr>
   
    <?php } ?>
    </table>
-   
+   <a href="users_add">add new user</a>
    
 </div>
 </div>
