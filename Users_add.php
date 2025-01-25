@@ -18,6 +18,11 @@ include('includes/header.php');
  
    <a href="users_add">add new user</a>
    <form method="post">
+   <!-- username input -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <input type="username" id="username" class="form-control" name="email"/>
+    <label class="form-label" for="email">Username</label>
+  </div>
   <!-- Email input -->
   <div data-mdb-input-init class="form-outline mb-4">
     <input type="email" id="email" class="form-control" name="email"/>
@@ -29,7 +34,13 @@ include('includes/header.php');
     <input type="password" id="password" class="form-control" name="password"/>
     <label class="form-label" for="password">Password</label>
   </div>
-
+  <!-- active element -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <select name="active" id="active">
+      <option value="1">Active</option>
+      <option value="0">Inactive</option>
+    </select>
+  </div>
   <!-- 2 column grid layout for inline styling -->
   <div class="row mb-4">
     <div class="col d-flex justify-content-center">
