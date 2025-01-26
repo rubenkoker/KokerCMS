@@ -6,7 +6,22 @@ include('includes/functions.php');
 secure();
 include('includes/header.php');
 
-
+if(isset($_POST['username'])){
+  if($stm = $connect->prepare('INSERT INTO users(username,email,password,active) VALUES (?,?,?,?)')){
+    $hashed =  sha1($_POST['password']);
+    $stm->bind_param('ssss', $_POST['username'], $_POST['email'],$hashed, $_POST['active']);
+    $stm->execute();
+    set_message("a new user: ".$_SESSION['username'].'has been added');
+     header('Location: users.php');
+    $stm->close();
+    die();
+   
+    
+  }
+  else{
+    echo 'could not prepare statement';
+  }
+}
  
     
   
@@ -20,8 +35,8 @@ include('includes/header.php');
    <form method="post">
    <!-- username input -->
   <div data-mdb-input-init class="form-outline mb-4">
-    <input type="username" id="username" class="form-control" name="email"/>
-    <label class="form-label" for="email">Username</label>
+    <input type="username" id="username" class="form-control" name="username"/>
+    <label class="form-label" for="username">Username</label>
   </div>
   <!-- Email input -->
   <div data-mdb-input-init class="form-outline mb-4">
@@ -36,7 +51,7 @@ include('includes/header.php');
   </div>
   <!-- active element -->
   <div data-mdb-input-init class="form-outline mb-4">
-    <select name="active" id="active">
+    <select name="active"class="form-select" id="active">
       <option value="1">Active</option>
       <option value="0">Inactive</option>
     </select>
@@ -60,7 +75,7 @@ include('includes/header.php');
 
 </div>
   <!-- Submit button -->
-  <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Sign in</button>
+  <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">add user</button>
 </form>
 </div>
 </div>
